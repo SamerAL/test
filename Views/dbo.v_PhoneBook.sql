@@ -1,5 +1,10 @@
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
---View [dbo].[v_PhoneBook] is encrypted. It could not be scripted
+--create view
+create view v_PhoneBook (UserID,Name, Surname, Street, City, Home_phone, Mobile_Phone) 
+as
+select * from dbo.PhoneBook
+where UserID<10
+order by Surname desc offset 0 row fetch next 5 rows only;
 GO
